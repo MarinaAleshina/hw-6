@@ -1,0 +1,64 @@
+.wrapper {
+  position: relative;
+  min-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100vh;
+}
+.about-user {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #cdcde2;
+  border: 1px solid #000;
+  border-radius: 3px;
+  width: 500px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+}
+
+.btn-click {
+  cursor: pointer;
+  width: 100%;
+  max-width: 120px;
+  padding: 10px 0;
+  background-color: #180c5f;
+  border: 0;
+  outline: none;
+  font-size: 14px;
+  border-radius: 3px;
+  color: #fff;
+  margin: 0 0 20px;
+}
+
+.output-click {
+  display: block;
+}
+
+.js-about-user {
+  display: block;
+}
+
+.ul {
+  outline: none;
+  list-style: none;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+}
+
+.user {
+  margin: 0 0 20px;
+  cursor: pointer;
+  color: #ff0000;
+}
+
+.user:hover {
+  color: rgba(255, 0, 0, 0.8);
+}
+.user:last-child {
+  margin: 0;
+}
