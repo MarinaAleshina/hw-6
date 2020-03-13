@@ -24,7 +24,7 @@ function showList(el) {
     const ul = document.createElement("ul");
     const output = document.querySelector(".output");
     ul.classList.add("ul");
-    // output.appendChild(ul);
+    output.appendChild(ul);
     el.forEach(key => {
       let li = document.createElement("li");
       li.classList.add("user");
@@ -41,6 +41,5 @@ function showList(el) {
         wrap.appendChild(newEl);
       }
     });
-    output.appendChild(ul);
   });
 }
