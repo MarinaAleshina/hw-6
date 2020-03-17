@@ -8,38 +8,44 @@ const request = {
         let response = JSON.parse(xhr.responseText);
         callback(response);
       });
+      xhr.addEventListener("error", () => {
+        callback("error");
+      });
       xhr.send();
-    } catch {
-      callBack(error);
+    } catch (e) {
+      callback(e);
     }
   }
 };
-request.get("https://jsonplaceholder.typicode.com/users", showList);
-function showList(el) {
-  const btn = document.querySelector(".btn-click");
 
-  console.log(el);
+const btnClick = document.querySelector(".btn-click");
+btnClick.addEventListener("click", userList);
 
-  btn.addEventListener("click", () => {
-    const ul = document.createElement("ul");
-    const output = document.querySelector(".output");
-    ul.classList.add("ul");
-    output.appendChild(ul);
-    el.forEach(key => {
-      let li = document.createElement("li");
-      li.classList.add("user");
-      li.innerHTML = `${key.name}`;
-      ul.appendChild(li);
-      li.addEventListener("click", foo);
-      function foo(e) {
-        const newEl = document.createElement("div");
-        newEl.classList.add("about-user", "js-about-user");
-        newEl.innerHTML += `username: ${key.name} <br/>`;
-        newEl.innerHTML += `email: ${key.email} <br/>`;
-        newEl.innerHTML += `website: ${key.website} <br/>`;
-        const wrap = document.querySelector(".wrapper");
-        wrap.appendChild(newEl);
-      }
-    });
+function userList() {
+  request.get("https://jsonplaceholder.typicode.com/users", getUsers);
+  btnClick.removeEventListener("click", userList);
+  return getUsers;
+}
+const output = document.querySelector(".output");
+let div = document.querySelector(".about-user");
+
+function getUsers(user) {
+  let ul = document.createElement("ul");
+  ul.classList.add("ul");
+
+  output.appendChild(ul);
+
+  user.forEach(key => {
+    let li = document.createElement("li");
+    li.classList.add("user");
+    li.innerHTML = `${key.name}`;
+    ul.appendChild(li);
+    li.addEventListener("click", renderUser);
   });
+
+  renderUser(user);
+}
+
+function renderUser(user) {
+  let array = user;
 }
